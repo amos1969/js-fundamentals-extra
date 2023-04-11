@@ -7,6 +7,9 @@
 // with a reference to your function.
 //
 // TODO: write code below
+function secondsInHours(hours) {
+  return hours * 60 * 60
+}
 
 
 
@@ -22,6 +25,9 @@
 // with a reference to your function.
 //
 // TODO: write code below
+function milesTravelled(speed, duration) {
+  return Math.ceil((speed * duration)/60)
+}
 
 
 
@@ -36,6 +42,9 @@
 // with a reference to your function.
 //
 // TODO: write code below
+function kilometersToMiles(kms) {
+  return Math.round(kms/1.6)
+}
 
 
 
@@ -52,7 +61,14 @@
 // with a reference to your function.
 //
 // TODO: write code below
-
+function makeSentence(inputString) {
+  returnString = inputString[0].toUpperCase() + inputString.slice(1)
+  punctuation = ['.', '?', '!']
+  if (!punctuation.includes(returnString[returnString.length-1])) {
+    returnString += '.'
+  }
+  return returnString
+}
 
 
 // FileExtension
@@ -66,7 +82,13 @@
 // with a reference to your function.
 //
 // TODO: write code below
-
+function fileExtension(inputString) {
+  extension = ''
+  if (inputString.includes('.')) {
+    extension = inputString.slice(inputString.lastIndexOf('.') + 1)
+  }
+  return extension
+}
 
 
 // Range
@@ -79,6 +101,19 @@
 // with a reference to your function.
 //
 // TODO: write code below
+function getRange(numbers) {
+  let lowest = numbers[0]
+  let highest = numbers[0]
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < lowest) {
+      lowest = numbers[i]
+    }
+    if (numbers[i] > highest) {
+      highest = numbers[i]
+    }
+  }
+  return highest - lowest
+}
 
 
 
@@ -98,7 +133,17 @@
 // with a reference to your function.
 //
 // TODO: write code below
-
+function checkTransactions(transactions, startingBalance, overdraft)
+{
+  let balance = startingBalance
+  for (transaction of transactions) {
+    balance += transaction
+  }
+  if (balance < -overdraft) {
+    return false
+  }
+  return true
+}
 
 
 // FilmsInGenre
@@ -113,32 +158,41 @@
 // with a reference to your function.
 //
 // TODO: write code below
+function filmsInGenre(films, genre) {
+  const matchingFilms = []
+  for (film of films) {
+    if (film.genres.includes(genre)) {
+      matchingFilms.push(film.name)
+    }
+  }
+  return matchingFilms
+}
 
 
 
 // TODO: change undefined to be the name of the functions you defined
 module.exports = {
   //SecondsInHours
-  a: undefined,
+  a: secondsInHours,
 
   //MilesTravelled,
-  b: undefined,  
+  b: milesTravelled,  
 
   //KilometersToMiles,
-  c: undefined, 
+  c: kilometersToMiles, 
 
   //MakeSentence
-  d: undefined, 
+  d: makeSentence, 
 
   //FileExtension
-  e: undefined,
+  e: fileExtension,
 
   //Range
-  f: undefined,
+  f: getRange,
 
   //CheckTransactions
-  g: undefined,
+  g: checkTransactions,
 
   //FilmsInGenre
-  h: undefined,
+  h: filmsInGenre,
 }
